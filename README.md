@@ -7,9 +7,7 @@
 
 Installation & Setup
 1️⃣ Clone the Repository
-git clone https://github.com/YOUR_GITHUB_USERNAME/calculator-app.git
 cd calculator-app
-
 
 Set Up a Virtual Environment (Recommended)
 python -m venv venv
