@@ -39,6 +39,7 @@ jobs:
       run: |
         # Run the container in detached mode
         docker run -d -p 5000:5000 --name web-app my-python-web-app
+        docker ps
 
     # Step 6: Optionally, run tests within the container (if you have any)
     #- name: Run tests inside the container (optional)
