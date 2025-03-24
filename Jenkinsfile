@@ -1,6 +1,7 @@
 pipeline {
     agent any
 
+    stages {
         stage('Build') {
             steps { 
                 dir('Calculator-Web-Application') {
@@ -17,3 +18,4 @@ pipeline {
             }
         }
     }
+}
