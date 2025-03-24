@@ -34,6 +34,6 @@ jobs:
       run: docker logout
 
     - name: job done
-        echo "success"
+        echo "done"
 
 

@@ -33,6 +33,8 @@ jobs:
     - name: Check Docker container status
       run: |
         docker ps 
-        docker ps -a
+  
 
 
+
+        
