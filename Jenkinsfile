@@ -4,8 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps { 
-                dir('Calculator-Web-Application') {
-                    sh 'docker build -t web_application .'
+                sh 'docker build -t web_application .'
                 }
             }
         }
