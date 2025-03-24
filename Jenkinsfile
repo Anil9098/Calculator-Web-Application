@@ -12,6 +12,8 @@ pipeline {
             steps {
                 sh 'docker rm -f web-app || true'
                 sh 'docker run -d -p 5000:5000 --name web-app web_application'
+                sh 'pwd'
+                sh 'tree'
             }
         }
-}
+    }
