@@ -5,7 +5,6 @@ pipeline {
         stage('Build') {
             steps { 
                 sh 'docker build -t web_application .'
-                }
             }
         }
         stage('Deploy') {
