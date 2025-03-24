@@ -28,9 +28,11 @@ jobs:
 
     - name: Run Docker container
       run: |
-        docker run -d -p 5000:5000 --name my-container ${{ secrets.DOCKER_USERNAME }}/my-app:latest
+        docker run -d -p 5000:5000 --name my-container ${{ secrets.DOCKER_USERNAME }}/my-app:lates9t
 
     - name: Check Docker container status
       run: |
         docker ps 
+        docker ps -a
+
 
