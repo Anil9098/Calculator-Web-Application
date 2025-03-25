@@ -6,6 +6,8 @@ properties([
 
 node {
     try {
+
+	def dockerTag = params.DOCKER_TAG ?: 'latest'
         // Stage 1: Build Docker image
         stage('Build') {
             echo "Building Docker image"
@@ -33,4 +35,8 @@ node {
         echo 'Pipeline completed.'
     }
 }
+
+
+
+
 
