@@ -17,11 +17,19 @@ node {
 	    checkout scm
 	}
 
-	stage('Build') {
-            echo "Building Docker image"
-            sh 'docker build -t $DOCKER_USERNAME/web_application:$DOCKER_TAG .'
-        }
+	//stage('Build') {
+        //    echo "Building Docker image"
+        //    sh 'docker build -t $DOCKER_USERNAME/web_application:$DOCKER_TAG .'
+        //}
 
+        stage('Build Image') {
+            steps {
+                script {
+                    docker.build('$DOCKER_USERNAME/web_application:$DOCKER_TAG')
+                }
+            }
+        }
+	
         // Stage 2: Login to Docker Hub
         stage('Login to Docker Hub') {
             withDockerRegistry([credentialsId: 'docker_hub_credentials']) {
