@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps { 
-                sh 'docker build -t $DOCKER_USERNAME/web_application:DOCKER_TAG .'
+                sh 'docker build -t $DOCKER_USERNAME/web_application:$DOCKER_TAG .'
             }
         }
         
@@ -23,7 +23,7 @@ pipeline {
                 //sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
                 
                 // Push the image to Docker Hub
-                sh 'docker push $DOCKER_USERNAME/web_application:DOCKER_TAG'
+                sh 'docker push $DOCKER_USERNAME/web_application:$DOCKER_TAG'
             }
         }
    }
