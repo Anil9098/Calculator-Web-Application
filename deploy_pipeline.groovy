@@ -9,9 +9,11 @@ node {
     try {
         // Stage 1: Login to Docker Hub
         stage('Login to Docker Hub') {
-            echo "Login to Docker Hub"
-            sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
+            withDockerRegistry([credentialsId: 'docker_hub_credentials']) {
+                echo "Successfully logged into Docker Hub"
+            }
         }
+
 
         // Stage 2: Pull Image
         stage('Pull Image') {
