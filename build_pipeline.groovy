@@ -4,10 +4,14 @@ properties([
     ])
 ])
 
+//def dockertag = params.DOCKER_TAG ?: 'latest'
+
 node {
     try {
 
 	def dockertag = params.DOCKER_TAG ?: 'latest'
+	echo "docker image tag: $dockertag"
+
         // Stage 1: Build Docker image
         stage('Build') {
             echo "Building Docker image"
