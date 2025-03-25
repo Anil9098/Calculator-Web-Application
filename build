@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+    
     stages {
         stage('Build') {
             steps { 
@@ -23,7 +23,7 @@ pipeline {
                 //sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
                 
                 // Push the image to Docker Hub
-                sh 'docker push $DOCKER_USERNAME/web_application:latest'
+                sh 'docker push $DOCKER_USERNAME/web_application:DOCKER_TAG'
             }
         }
    }
