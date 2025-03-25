@@ -7,6 +7,16 @@ pipeline {
                 sh 'docker build -t web_application .'
             }
         }
+
+	stage('Push to Docker Hub') {
+            steps {
+                //Log into Docker Hub
+                sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
+                
+                // Push the image to Docker Hub
+                sh 'docker push web_application:latest'
+            }
+        }
    }
 
 }
