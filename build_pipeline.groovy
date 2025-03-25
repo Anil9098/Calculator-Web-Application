@@ -1,4 +1,4 @@
-properties([
+properties(i[
     parameters([
         string(name: 'DOCKER_TAG', defaultValue: 'new', description: 'Image Tag')
     ])
@@ -19,9 +19,9 @@ node {
 
         // Stage 2: Login to Docker Hub
         stage('Login to Docker Hub') {
-            echo "Logging into Docker Hub"
-            // Secure login using password from environment variables
-            sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
+            withDockerRegistry([credentialsId: 'docker_hub_credentials']) {
+                echo "Successfully logged into Docker Hub"
+            }
         }
 
         // Stage 3: Push the image to Docker Hub
