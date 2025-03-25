@@ -1,4 +1,4 @@
-properties(i[
+properties([
     parameters([
         string(name: 'DOCKER_TAG', defaultValue: 'new', description: 'Image Tag')
     ])
