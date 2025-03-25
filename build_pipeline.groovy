@@ -1,6 +1,6 @@
 properties([
     parameters([
-        string(name: 'DOCKER_TAG', defaultValue: 'latest', description: 'Docker image tag')
+        string(name: 'DOCKER_TAG', defaultValue: 'latest', description: 'Docker Image Tag')
     ])
 ])
 
@@ -11,7 +11,7 @@ node {
         // Stage 1: Build Docker image
         stage('Build') {
             echo "Building Docker image"
-            sh 'docker build -t $DOCKER_USERNAME/web_application:$dockerTag .'
+            sh 'docker build -t $DOCKER_USERNAME/web_application:$DOCKER_TAG .'
         }
 
         // Stage 2: Login to Docker Hub
@@ -25,7 +25,7 @@ node {
         stage('Push to Docker Hub') {
             echo "Pushing Docker image to Docker Hub"
             // Push the image to Docker Hub
-            sh 'docker push $DOCKER_USERNAME/web_application:$dockerTag'
+            sh 'docker push $DOCKER_USERNAME/web_application:$DOCKER_TAG'
         }
 
     } catch (Exception e) {
