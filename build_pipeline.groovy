@@ -1,3 +1,9 @@
+properties([
+    parameters([
+        string(name: 'DOCKER_TAG', defaultValue: 'latest', description: 'Docker image tag')
+    ])
+])
+
 node {
     try {
         // Stage 1: Build Docker image
