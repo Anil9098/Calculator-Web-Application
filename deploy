@@ -18,14 +18,14 @@ pipeline {
                 //sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
                 
                 // Push the image to Docker Hub
-                sh 'docker pull $DOCKER_USERNAME/web_application:DOCKER_TAG'
+                sh 'docker pull $DOCKER_USERNAME/web_application:$DOCKER_TAG'
             }
         }
 
 	stage('Deploy') {
             steps {
                 sh 'docker rm -f web-app || true'
-                sh 'docker run -d -p 5000:5000 --name web-app $DOCKER_USERNAME/web_application:DOCKER_TAG'
+                sh 'docker run -d -p 5000:5000 --name web-app $DOCKER_USERNAME/web_application:$DOCKER_TAG'
                 sh 'docker ps'
                 sh 'pwd'
             }
