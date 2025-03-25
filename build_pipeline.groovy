@@ -12,7 +12,12 @@ node {
 	//echo "docker image tag: $DOCKER_TAG"
 
         // Stage 1: Build Docker image
-        stage('Build') {
+        stage('Code Clone') {
+	    echo "cloning git repository"
+	    checkout scm
+	}
+
+	stage('Build') {
             echo "Building Docker image"
             sh 'docker build -t $DOCKER_USERNAME/web_application:$DOCKER_TAG .'
         }
