@@ -1,3 +1,10 @@
+properties([
+    parameters([
+        string(name: 'DOCKER_TAG', defaultValue: 'new', description: 'Image Tag')
+    ])
+])
+
+
 node {
     try {
         // Stage 1: Login to Docker Hub
