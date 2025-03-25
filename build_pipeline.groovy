@@ -10,7 +10,7 @@ node {
     try {
 
 	//def dockertag = params.DOCKER_TAG ?: 'latest'
-	echo "docker image tag: $dockertag"
+	echo "docker image tag: $DOCKER_TAG"
 
         // Stage 1: Build Docker image
         stage('Build') {
