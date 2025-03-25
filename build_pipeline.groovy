@@ -7,11 +7,11 @@ properties([
 node {
     try {
 
-	//def dockerTag = params.DOCKER_TAG ?: 'latest'
+	def dockertag = params.DOCKER_TAG ?: 'latest'
         // Stage 1: Build Docker image
         stage('Build') {
             echo "Building Docker image"
-            sh 'docker build -t $DOCKER_USERNAME/web_application:$DOCKER_TAG .'
+            sh 'docker build -t $DOCKER_USERNAME/web_application:$dockertag .'
         }
 
         // Stage 2: Login to Docker Hub
@@ -25,7 +25,7 @@ node {
         stage('Push to Docker Hub') {
             echo "Pushing Docker image to Docker Hub"
             // Push the image to Docker Hub
-            sh 'docker push $DOCKER_USERNAME/web_application:$DOCKER_TAG'
+            sh 'docker push $DOCKER_USERNAME/web_application:$dockertag'
         }
 
     } catch (Exception e) {
