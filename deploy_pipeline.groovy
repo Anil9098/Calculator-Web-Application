@@ -31,6 +31,7 @@ node {
             echo "Deploying the application"
             def command = "docker rm -f web-app || true"
 	    def process = command.execute()  
+	    process.waitFor()
             sh 'docker run -d -p 5000:5000 --name web-app $DOCKER_USERNAME/web_application:$DOCKER_TAG'  
             sh 'docker ps'  
         }
