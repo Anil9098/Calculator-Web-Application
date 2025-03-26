@@ -12,18 +12,20 @@ node {
         stage('Login to Docker Hub') {
             withDockerRegistry([credentialsId: 'docker_hub_credentials']) {
                 echo "Successfully logged into Docker Hub"
+		image = ("${DOCKER_USERNAME}/web_application:$DOCKER_TAG")
+		image.pull()
             }
         }
 
 
         // Stage 2: Pull Image
-        stage('Pull Image') {
-            echo "Pulling Docker image..."
-            image = ("${DOCKER_USERNAME}/web_application:$DOCKER_TAG")
+       // stage('Pull Image') {
+         //   echo "Pulling Docker image..."
+           // image = ("${DOCKER_USERNAME}/web_application:$DOCKER_TAG")
 
-	    echo "pass"
-	    image.pull()
-        }
+	   // echo "pass"
+	   // image.pull()
+       // }
 
 
         // Stage 3: Deploy
