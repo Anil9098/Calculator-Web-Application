@@ -44,7 +44,7 @@ node {
        // Stage 3: Push the image to Docker Hub
         stage('Push to Docker Hub') {
 
-	   docker.withRegistry("${docker_hub_credentials}") {
+	   docker.withRegistry("https://hub.docker.com/repositories/technicalninja","${docker_hub_credentials}") {
                 image.push()
          //  echo "Pushing Docker image to Docker Hub"
           // ("${DOCKER_USERNAME}/web_application:${DOCKER_TAG}").push()
