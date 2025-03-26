@@ -8,6 +8,7 @@ properties([
 node {
     try {
 
+	def image
 	//def dockertag = params.DOCKER_TAG ?: 'latest'
 	//echo "docker image tag: $DOCKER_TAG"
 
@@ -31,7 +32,7 @@ node {
 	
 	stage('Build Image') {
             echo "Building Docker image"
-            def image = docker.build("${DOCKER_USERNAME}/web_application:${DOCKER_TAG}")
+            image = docker.build("${DOCKER_USERNAME}/web_application:${DOCKER_TAG}")
         }
 	
         // Stage 2: Login to Docker Hub
@@ -56,7 +57,7 @@ node {
             withCredentials([usernamePassword(credentialsId: 'docker_hub_credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                 docker.withRegistry('https://index.docker.io/v1/', 'docker_hub_credentials') {
                     echo "Pushing Docker image to Docker Hub"
-                    ("${DOCKER_USERNAME}/web_application:${DOCKER_TAG}").push()
+                    image.push()
                 }
             }
         }
