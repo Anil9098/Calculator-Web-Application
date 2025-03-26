@@ -17,7 +17,7 @@ node {
          //   echo "cloning git repository"
 	 //   withCredentials([gitUsernamePassword(credentialsId: 'gitCredentialsId',url: "https://github.com/Anil9098/Calculator-Web-Application.git")])
 	    
-	tage('Checkout') {
+	stage('Checkout') {
         // Checkout the private repository using Git with credentials
         checkout([$class: 'GitSCM',  
             userRemoteConfigs: [[
