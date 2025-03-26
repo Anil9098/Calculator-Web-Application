@@ -9,7 +9,6 @@ node {
     try {
 	def image
 	def command
-	def process
         // Stage 1: Login to Docker Hub
         stage('Login to Docker Hub') {
             withDockerRegistry([credentialsId: 'docker_hub_credentials']) {
@@ -32,7 +31,7 @@ node {
         stage('Deploy') {
             echo "Deploying the application"
             command = "docker rm -f web-app || true"
-	    process = command.execute()  
+	    command.execute()  
 	   // process.waitFor()
             sh 'docker run -d -p 5000:5000 --name web-app $DOCKER_USERNAME/web_application:$DOCKER_TAG'  
             sh 'docker ps'  
