@@ -7,6 +7,7 @@ properties([
 
 node {
     try {
+	def image
         // Stage 1: Login to Docker Hub
         stage('Login to Docker Hub') {
             withDockerRegistry([credentialsId: 'docker_hub_credentials']) {
@@ -18,7 +19,9 @@ node {
         // Stage 2: Pull Image
         stage('Pull Image') {
             echo "Pulling Docker image..."
-            def image = ("${DOCKER_USERNAME}/web_application:$DOCKER_TAG")
+            image = ("${DOCKER_USERNAME}/web_application:$DOCKER_TAG")
+
+	    echo "pass"
 	    image.pull()
         }
 
