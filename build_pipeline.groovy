@@ -31,24 +31,21 @@ node {
 	
 	stage('Build Image') {
             echo "Building Docker image"
-            def customImage docker.build("${DOCKER_USERNAME}/web_application:${DOCKER_TAG}")
+            docker.build("${DOCKER_USERNAME}/web_application:${DOCKER_TAG}")
         }
 	
         // Stage 2: Login to Docker Hub
         stage('Login to Docker Hub') {
             withDockerRegistry([credentialsId: 'docker_hub_credentials']) {
                 echo "Successfully logged into Docker Hub"
-		echo "pushing image on docker hub"
-		customImage.push()
             }
         }
 
-        // Stage 3: Push the image to Docker Hub
-       // stage('Push to Docker Hub') {
-           // echo "Pushing Docker image to Docker Hub"
-            // Push the image to Docker Hub
-         //   docker.image("${DOCKER_USERNAME}/web_application:${DOCKER_TAG}").push()
-       // }
+       // Stage 3: Push the image to Docker Hub
+        stage('Push to Docker Hub') {
+           echo "Pushing Docker image to Docker Hub"
+           ("${DOCKER_USERNAME}/web_application:${DOCKER_TAG}").push()
+        }
 
     } catch (Exception e) {
         currentBuild.result = 'FAILURE'
