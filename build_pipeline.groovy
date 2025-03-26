@@ -38,19 +38,18 @@ node {
         stage('Login to Docker Hub') {
             withDockerRegistry([credentialsId: 'docker_hub_credentials']) {
                 echo "Successfully logged into Docker Hub"
-		image.push()
             }
         }
 
        // Stage 3: Push the image to Docker Hub
-       // stage('Push to Docker Hub') {
+        stage('Push to Docker Hub') {
 
-	  // docker.withRegistry("https://hub.docker.com/repositories/technicalninja","${docker_hub_credentials}") {
-            //    image.push()
+	    docker.withRegistry("[credentialsId: 'docker_hub_credentials']") {
+               image.push()
          //  echo "Pushing Docker image to Docker Hub"
           // ("${DOCKER_USERNAME}/web_application:${DOCKER_TAG}").push()
-         //  } 
-       // }
+            } 
+        }
     } catch (Exception e) {
         currentBuild.result = 'FAILURE'
         throw e
