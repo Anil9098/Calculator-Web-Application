@@ -56,7 +56,7 @@ node {
             withCredentials([usernamePassword(credentialsId: 'docker_hub_credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                 docker.withRegistry('https://index.docker.io/v1/', 'docker_hub_credentials') {
                     echo "Pushing Docker image to Docker Hub"
-                    image.push()
+                    ("${DOCKER_USERNAME}/web_application:${DOCKER_TAG}").push()
                 }
             }
         }
