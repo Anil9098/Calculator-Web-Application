@@ -31,7 +31,7 @@ node {
 	
 	stage('Build Image') {
             echo "Building Docker image"
-            sh 'docker build -t $DOCKER_USERNAME/web_application:$DOCKER_TAG .'
+            docker.build("${DOCKER_USERNAME}/web_application:${DOCKER_TAG}")
         }
 	
         // Stage 2: Login to Docker Hub
