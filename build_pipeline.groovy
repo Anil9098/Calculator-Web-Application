@@ -13,11 +13,19 @@ node {
 
         // Stage 1: Build Docker image
 	
-      //  stage('Code Clone') {
-	//    echo "cloning git repository"
+       // stage('Code Clone') {
+         //   echo "cloning git repository"
 	 //   withCredentials([gitUsernamePassword(credentialsId: 'gitCredentialsId',url: "https://github.com/Anil9098/Calculator-Web-Application.git")])
+	    
+	tage('Checkout') {
+        // Checkout the private repository using Git with credentials
+        checkout([$class: 'GitSCM',  
+            userRemoteConfigs: [[
+                credentialsId: "gitCredentialsId"
+            ]]
+         ])
+       }
 	
-
 	stage('Build Image') {
             echo "Building Docker image"
             sh 'docker build -t $DOCKER_USERNAME/web_application:$DOCKER_TAG .'
