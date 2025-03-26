@@ -18,8 +18,10 @@ node {
         // Stage 2: Pull Image
         stage('Pull Image') {
             echo "Pulling Docker image..."
-            sh 'docker pull $DOCKER_USERNAME/web_application:$DOCKER_TAG'
+            def image = ("${DOCKER_USERNAME}/web_application:$DOCKER_TAG")
+	    image.pull()
         }
+
 
         // Stage 3: Deploy
         stage('Deploy') {
