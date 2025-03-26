@@ -42,14 +42,25 @@ node {
         }
 
        // Stage 3: Push the image to Docker Hub
-        stage('Push to Docker Hub') {
+       // stage('Push to Docker Hub') {
 
-	    docker.withRegistry("[credentialsId: 'docker_hub_credentials']") {
-               image.push()
+	   // docker.withRegistry("[credentialsId: 'docker_hub_credentials']") {
+           //    image.push()
          //  echo "Pushing Docker image to Docker Hub"
           // ("${DOCKER_USERNAME}/web_application:${DOCKER_TAG}").push()
-            } 
+         //   } 
+       // }
+
+
+	stage('Push to Docker Hub') {
+            withCredentials([usernamePassword(credentialsId: 'docker_hub_credentials')]) {
+                docker.withRegistry('https://index.docker.io/v1/', 'docker_hub_credentials') {
+                    echo "Pushing Docker image to Docker Hub"
+                    image.push("${params.DOCKER_TAG}")
+                }
+            }
         }
+
     } catch (Exception e) {
         currentBuild.result = 'FAILURE'
         throw e
