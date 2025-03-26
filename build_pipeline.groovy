@@ -13,10 +13,10 @@ node {
 
         // Stage 1: Build Docker image
 	
-        stage('Code Clone') {
-	    echo "cloning git repository"
-	    withCredentials([gitUsernamePassword(credentialsId: 'gitCredentialsId',url: "https://github.com/Anil9098/Calculator-Web-Application.git")])
-	}
+      //  stage('Code Clone') {
+	//    echo "cloning git repository"
+	 //   withCredentials([gitUsernamePassword(credentialsId: 'gitCredentialsId',url: "https://github.com/Anil9098/Calculator-Web-Application.git")])
+	
 
 	stage('Build Image') {
             echo "Building Docker image"
