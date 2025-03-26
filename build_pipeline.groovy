@@ -14,7 +14,7 @@ node {
         // Stage 1: Build Docker image
         stage('Code Clone') {
 	    echo "cloning git repository"
-	    sh "git clone https://\$GIT_USERNAME:\$GIT_PASSWORD@github.com/Anil9098/Calculator-Web-Application.git"
+	    git credentialsId: git_credentials
 	}
 
 	stage('Build Image') {
