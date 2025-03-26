@@ -38,7 +38,7 @@ node {
         stage('Login to Docker Hub') {
             withDockerRegistry([credentialsId: 'docker_hub_credentials']) {
                 echo "Successfully logged into Docker Hub"
-		image.push()
+	//	image.push()
             }
         }
 
