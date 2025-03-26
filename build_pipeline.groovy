@@ -12,9 +12,10 @@ node {
 	//echo "docker image tag: $DOCKER_TAG"
 
         // Stage 1: Build Docker image
+	
         stage('Code Clone') {
 	    echo "cloning git repository"
-	    withCredentials([gitUsernamePassword(credentialsId: 'gitCredentialsId',)])
+	    withCredentials([gitUsernamePassword(credentialsId: 'gitCredentialsId')])
 	}
 
 	stage('Build Image') {
