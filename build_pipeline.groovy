@@ -38,7 +38,7 @@ node {
         stage('Login to Docker Hub') {
             withDockerRegistry([credentialsId: 'docker_hub_credentials']) {
                 echo "Successfully logged into Docker Hub"
-	//	image.push()
+		image.push()
             }
         }
 
@@ -49,8 +49,8 @@ node {
             //    image.push()
          //  echo "Pushing Docker image to Docker Hub"
           // ("${DOCKER_USERNAME}/web_application:${DOCKER_TAG}").push()
-           } 
-        }
+         //  } 
+       // }
     } catch (Exception e) {
         currentBuild.result = 'FAILURE'
         throw e
