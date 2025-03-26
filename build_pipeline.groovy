@@ -29,27 +29,15 @@ node {
         stage('Login to Docker Hub') {
             withDockerRegistry([credentialsId: 'docker_hub_credentials']) {
                 echo "Successfully logged into Docker Hub"
-		echo "pushing docker image"
+            }
+       }
+
+        stage('push to docker hub') {
+	    withDockerRegistry([credentialsId: 'docker_hub_credentials']) {
+                echo "Pushing image to docker hub"
 		image.push()
             }
         }
-
-       // stage('push to docker hub') {
-
-	  // docker.withRegistry("[credentialsId: 'docker_hub_credentials']") {
-         //      image.push()
-	//}
-
-
-//	stage('Push to Docker Hub') {
-//            withCredentials([usernamePassword(credentialsId: 'docker_hub_credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-//                docker.withRegistry('https://index.docker.io/v1/', 'docker_hub_credentials') {
-//                    echo "Pushing Docker image to Docker Hub"
-//                    image.push()
-//                }
-//            }
-//        }
-
 
     } catch (Exception e) {
         currentBuild.result = 'FAILURE'
