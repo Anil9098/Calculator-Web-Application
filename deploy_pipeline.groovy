@@ -28,11 +28,11 @@ node {
 
         // Stage 3: Deploy
         stage('Deploy') {
-            echo "Deploying the application..."
-            sh 'docker rm -f web-app || true'  
+            echo "Deploying the application"
+            command = "docker rm -f web-app || true"
+	    process = command.execute()  
             sh 'docker run -d -p 5000:5000 --name web-app $DOCKER_USERNAME/web_application:$DOCKER_TAG'  
             sh 'docker ps'  
-            sh 'pwd'  
         }
 
     } catch (Exception e) {
