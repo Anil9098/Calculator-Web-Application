@@ -14,7 +14,7 @@ node {
         // Stage 1: Build Docker image
         stage('Code Clone') {
 	    echo "cloning git repository"
-	    git credentialsId: da8368b4-5da2-450e-a5c7-4ed15b11093e
+	    git credentialsId: gitCredentialsId
 	}
 
 	stage('Build Image') {
