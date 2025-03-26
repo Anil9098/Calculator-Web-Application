@@ -40,7 +40,7 @@ node {
         currentBuild.result = 'FAILURE'
         throw e
     } finally {
-        echo 'Pipeline completed.'
+        echo 'Pipeline completed'
     }
 }
 
