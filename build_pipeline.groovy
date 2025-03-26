@@ -31,7 +31,7 @@ node {
 	
 	stage('Build Image') {
             echo "Building Docker image"
-            docker.build("${DOCKER_USERNAME}/web_application:${DOCKER_TAG}")
+            def image = docker.build("${DOCKER_USERNAME}/web_application:${DOCKER_TAG}")
         }
 	
         // Stage 2: Login to Docker Hub
@@ -43,10 +43,13 @@ node {
 
        // Stage 3: Push the image to Docker Hub
         stage('Push to Docker Hub') {
-           echo "Pushing Docker image to Docker Hub"
-           ("${DOCKER_USERNAME}/web_application:${DOCKER_TAG}").push()
-        }
 
+	   docker.withRegistry("${docker_hub_credentials}") {
+                image.push()
+         //  echo "Pushing Docker image to Docker Hub"
+          // ("${DOCKER_USERNAME}/web_application:${DOCKER_TAG}").push()
+           } 
+        }
     } catch (Exception e) {
         currentBuild.result = 'FAILURE'
         throw e
