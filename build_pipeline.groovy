@@ -22,7 +22,7 @@ node {
           checkout([$class: 'GitSCM',
 	    branches: [[name: '*/master']],  
             userRemoteConfigs: [[
-                url: "https://github.com/Anil9098/Calculator-Web-Application.git"
+                url: "https://github.com/Anil9098/Calculator-Web-Application.git",
 		credentialsId: "gitCredentialsId"
 		
             ]]
