@@ -31,7 +31,7 @@ node {
 	
 	stage('Build Image') {
             echo "Building Docker image"
-            def customImage docker.build("${DOCKER_USERNAME}/web_application:${DOCKER_TAG}")
+            docker.build("${DOCKER_USERNAME}/web_application:${DOCKER_TAG}")
         }
 	
         // Stage 2: Login to Docker Hub
@@ -45,7 +45,7 @@ node {
         stage('Push to Docker Hub') {
             echo "Pushing Docker image to Docker Hub"
             // Push the image to Docker Hub
-            customImage.push()
+            docker.push("${DOCKER_USERNAME}/web_application:${DOCKER_TAG}")
         }
 
     } catch (Exception e) {
