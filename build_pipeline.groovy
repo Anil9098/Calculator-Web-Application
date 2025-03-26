@@ -18,10 +18,13 @@ node {
 	 //   withCredentials([gitUsernamePassword(credentialsId: 'gitCredentialsId',url: "https://github.com/Anil9098/Calculator-Web-Application.git")])
 	    
 	stage('Checkout') {
-        // Checkout the private repository using Git with credentials
-        checkout([$class: 'GitSCM',  
+          // Checkout the private repository using Git with credentials
+          checkout([$class: 'GitSCM',
+	    branches: [[name: '*/master']]  
             userRemoteConfigs: [[
-                credentialsId: "gitCredentialsId"
+                url: "https://github.com/Anil9098/Calculator-Web-Application.git"
+		credentialsId: "gitCredentialsId"
+		
             ]]
          ])
        }
