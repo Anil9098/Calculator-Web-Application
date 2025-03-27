@@ -5,7 +5,7 @@ properties([
 ])
 
 
-node {
+node('worker') {
     try {
 
 	def image	    
