@@ -5,7 +5,7 @@ properties([
 ])
 
 
-node {
+node('worker') {
     try {
 	def image
 	def container
@@ -48,6 +48,8 @@ node {
         echo 'Pipeline completed' 
     }
 }
+
+
 
 	
 
