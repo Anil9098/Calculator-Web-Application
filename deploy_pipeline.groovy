@@ -30,7 +30,10 @@ node {
         // Stage 3: Deploy
         stage('Deploy') {
          //  sh 'docker rm -f web-app'
-            container = docker.container("web-app")
+            def containerName = 'web-app'
+            echo "pass"
+            container = docker.container(containerName)
+
 	    //container.stop()
 	    //container.remove(force: true)
 	    //process.waitFor()
