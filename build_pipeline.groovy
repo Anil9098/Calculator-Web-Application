@@ -5,10 +5,11 @@ properties([
 ])
 
 
-node('worker') {
+node {
     try {
-
-	def image	    
+    
+	sh "ssh -i ubuntu-key ubuntu@65.0.170.83"
+    def image	    
 	stage('Code Clone') {
           // git clone
           checkout([$class: 'GitSCM',
