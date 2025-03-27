@@ -30,10 +30,11 @@ node {
         // Stage 3: Deploy
         stage('Deploy') {
          //  sh 'docker rm -f web-app'
-        //container = docker.container("web-app")
+            container = docker.container("web-app")
 	    //container.stop()
 	    //container.remove(force: true)
 	    //process.waitFor()
+            echo "pass event"
         // docker run -d -p 5000:5000 --name web-app $DOCKER_USERNAME/web_application:$DOCKER_TAG
   	  def app = docker.image("${env.DOCKER_USERNAME}/web_application:${env.DOCKER_TAG}")
           app.run('-d -p 5000:5000 --name web-app --rm')
