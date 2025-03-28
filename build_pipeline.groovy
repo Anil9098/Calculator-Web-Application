@@ -12,6 +12,7 @@ node {
         def image	    
 	stage('Code Clone') {
           // git clone
+	  echo "code cloning"
           checkout([$class: 'GitSCM',
 	    branches: [[name: '*/master']],  
             userRemoteConfigs: [[
