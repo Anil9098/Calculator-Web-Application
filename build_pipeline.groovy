@@ -8,7 +8,7 @@ properties([
 node {
     try {
     
-	sh "ssh -i "$HOME/.ssh/id_rsa" ubuntu@65.0.170.83"
+	sh "ssh -i $path ubuntu@65.0.170.83"
         def image	    
 	stage('Code Clone') {
           // git clone
