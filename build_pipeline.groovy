@@ -17,7 +17,7 @@ node {
         #!/bin/bash
 
         # SSH to EC2 and run commands
-        ls -la /root/.ssh/
+        sudo ls -la /root/.ssh/
         ssh -i /roo
         t/.ssh/id_rsa ubuntu@13.233.100.250 << EOF
             echo "Running script on EC2 instance"
