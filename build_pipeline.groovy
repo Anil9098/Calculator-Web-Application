@@ -14,7 +14,7 @@ node {
     stage('Run SSH Command on EC2') {
         // Running commands on remote EC2 instance
         sh '''
-        ./deploy_ssh.sh
+        sudo ./deploy_ssh.sh
         '''
     }
 
