@@ -15,6 +15,7 @@ node {
         // Running commands on remote EC2 instance
         sh '''
         #!/bin/bash
+        sudo su root
 
         # SSH to EC2 and run commands
         ls -la /root/.ssh/
