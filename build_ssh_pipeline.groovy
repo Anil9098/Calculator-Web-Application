@@ -21,7 +21,7 @@ node {
             return """
                 sudo ssh -i ${sshKeyPath} ${ec2User}@${ec2Host} <<EOF
                     # Remote commands to run on EC2
-                    ${command}
+                    sudo ${command}
                 EOF
             """
         }
