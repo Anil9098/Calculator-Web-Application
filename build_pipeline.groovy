@@ -14,7 +14,7 @@ node {
     stage('Run SSH Command on EC2') {
         // Running commands on remote EC2 instance
         sh '''
-        //#!/bin/bash
+        #!/bin/bash
 
         # SSH to EC2 and run commands
         //sudo ls -la /root/.ssh/
