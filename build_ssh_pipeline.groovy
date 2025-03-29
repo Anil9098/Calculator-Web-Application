@@ -29,7 +29,7 @@ node {
             echo "Running SSH commands on EC2 instance"
             sh """
                 # Running a basic SSH command to test connectivity
-                ssh -i ${sshKeyPath} ${ec2User}@${ec2Host} 'echo "Connected to EC2 successfully!"'
+                sudo ssh -i ${sshKeyPath} ${ec2User}@${ec2Host} 'echo "Connected to EC2 successfully!"'
             """
         }
 
