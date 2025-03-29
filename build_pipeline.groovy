@@ -10,9 +10,9 @@ node {
     
 	//sh "ssh -i $key ubuntu@13.233.100.250"
 	def image
-    
+
     stage("ssh") {
-        sh "/.deploy_ssh.sh"
+        sh "./deploy_ssh.sh"
     }
 
 	stage('Code Clone') {
