@@ -4,6 +4,7 @@ properties([
     ])
 ])
 
+
 node {
     try {
         def image
@@ -18,12 +19,13 @@ node {
         // Remote SSH Command Template
         def remoteCommands = { command ->
             return """
-                sudo ssh -i ${sshKeyPath} ${ec2User}@${ec2Host} << 'EOF'
-                    # Remote commands to run on EC2
-                    ${command}
-                EOF
-            """
+            ssh -i ${sshKeyPath} ${ec2User}@${ec2Host} <<EOF
+                # Remote commands to run on EC2
+                ${command}
+            EOF
+        """
         }
+
 
         stage('Run SSH Command on EC2') {
             echo "Running SSH commands on EC2 instance"
@@ -40,6 +42,7 @@ node {
             sh remoteCommands("""
                 echo 'Cloning repository on EC2...'
                 git clone https://github.com/Anil9098/Calculator-Web-Application.git
+                
             """)
         }
 
@@ -81,3 +84,6 @@ node {
         echo 'Pipeline completed'
     }
 }
+
+
+
