@@ -15,11 +15,10 @@ node {
         // Running commands on remote EC2 instance
         sh '''
         #!/bin/bash
-        sudo su jenkins
 
         # SSH to EC2 and run commands
-        ls -la /root/.ssh/
-        ssh -i /roo
+        sudo ls -la /root/.ssh/
+        sudo ssh -i /roo
         t/.ssh/id_rsa ubuntu@13.233.100.250 << EOF
             echo "Running script on EC2 instance"
             # Add other commands you need to run on the EC2 instance here
