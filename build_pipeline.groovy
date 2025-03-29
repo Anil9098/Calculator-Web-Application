@@ -11,11 +11,17 @@ node {
 	//sh "ssh -i $key ubuntu@13.233.100.250"
 	def image
 
-    stage("ssh") {
-        //sh "chmod -R 777 deploy_ssh.sh"
-        echo "run script"
-        sh "./deploy_ssh.sh"
-        sh "pwd"
+    stage('Run SSH Command on EC2') {
+        // Running commands on remote EC2 instance
+        sh '''
+        #!/bin/bash
+
+        # SSH to EC2 and run commands
+        ssh -i /root/.ssh/id_rsa ubuntu@13.233.100.250 << EOF
+            echo "Running script on EC2 instance"
+            # Add other commands you need to run on the EC2 instance here
+        EOF
+        '''
     }
 
 	stage('Code Clone') {
