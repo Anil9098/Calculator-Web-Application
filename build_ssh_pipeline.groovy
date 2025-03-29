@@ -22,10 +22,10 @@ node {
                 sudo ssh -i ${sshKeyPath} ${ec2User}@${ec2Host} <<EOF
                     # Remote commands to run on EC2
                     sudo ${command}
-                EOF
+        EOF
             """
         }
-
+        
 
         stage('Run SSH Command on EC2') {
             echo "Running SSH commands on EC2 instance"
