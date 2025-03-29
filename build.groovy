@@ -3,7 +3,7 @@ node {
         stage('Run Script') {
 
             sh '''
-                sudo ssh -i /root/.ssh/id_rsa ubuntu@13.233.100.250 <<'EOF'
+                sudo ssh -i /root/.ssh/id_rsa ubuntu@13.233.100.250 <<- 'EOF'
                 # Commands to run inside EC2
                 
                 echo "Running script on EC2 instance"
