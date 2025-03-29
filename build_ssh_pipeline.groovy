@@ -19,11 +19,11 @@ node {
         // Remote SSH Command Template
         def remoteCommands = { command ->
             return """
-            sudo ssh -i ${sshKeyPath} ${ec2User}@${ec2Host} <<EOF
-                # Remote commands to run on EC2
-                ${command}
-            EOF
-        """
+                sudo ssh -i ${sshKeyPath} ${ec2User}@${ec2Host} <<EOF
+                    # Remote commands to run on EC2
+                    ${command}
+                EOF
+            """
         }
 
 
