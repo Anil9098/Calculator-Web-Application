@@ -12,7 +12,9 @@ node {
 	def image
 
     stage("ssh") {
-        sh "./deploy_ssh.sh"
+        //sh "chmod -R 777 deploy_ssh.sh"
+        //sh "./deploy_ssh.sh"
+        sh "pwd"
     }
 
 	stage('Code Clone') {
