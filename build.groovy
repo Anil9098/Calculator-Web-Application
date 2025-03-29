@@ -19,7 +19,6 @@ node {
                 
                 # Running Docker container
                 docker run -d -p 5000:5000 --name app-container web_application:latest || { echo "Docker run failed"; exit 1; }
-
                 EOF
             '''
         }
