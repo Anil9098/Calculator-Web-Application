@@ -13,7 +13,8 @@ node {
 
     stage("ssh") {
         //sh "chmod -R 777 deploy_ssh.sh"
-        //sh "./deploy_ssh.sh"
+        echo "run script"
+        sh "./deploy_ssh.sh"
         sh "pwd"
     }
 
