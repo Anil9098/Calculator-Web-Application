@@ -3,15 +3,21 @@ node {
         stage('Run Script') {
 
             sh '''
+                #sudo ssh -i /root/.ssh/id_rsa ubuntu@13.233.100.250
                 
-                sudo ssh -i /root/.ssh/id_rsa ubuntu@13.233.100.250 <<- 'EOF'
+                ssh -i "/home/ncs/Downloads/jenkinsnodekey.pem" ubuntu@13.234.67.6 <<- 'EOF'
+                
                 # Commands to run inside EC2
-                
-                git clone https://github.com/Anil9098/Calculator-Web-Application.git
-                
-                cd Calculator-Web-Application || { echo "Failed to enter directory"; exit 1; }
-                                
-                ./example_deployment.sh
+
+                rm -rf anil_practice
+
+                git clone https://github.com/Anil9098/anil_practice.git
+
+                cd anil_practice/bash
+
+                ./example_deployment.sh 
+
+                EOF
 
             '''
         }
@@ -23,6 +29,23 @@ node {
         echo 'Pipeline completed'
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
