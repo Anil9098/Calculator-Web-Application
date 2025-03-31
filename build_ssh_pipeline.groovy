@@ -1,26 +1,7 @@
 node {
     try {
         stage('SSH on EC2') {
-
-            sh '''
-                #sudo ssh -i /root/.ssh/id_rsa ubuntu@13.233.100.250
-                
-                sudo ssh -i "/home/ncs/Downloads/jenkinsnodekey.pem" ubuntu@13.234.67.6 <<EOF
-                
-                # Commands to run inside EC2
-
-                rm -rf anil_practice
-
-                git clone https://github.com/Anil9098/anil_practice.git
-
-                cd anil_practice/bash
-
-                ./example_deployment.sh 
-
-            EOF
-
-                echo "end EOF without error"
-            '''
+            sh "./deploy_ssh.sh"
         }
 
     } catch (Exception e) {
@@ -41,7 +22,7 @@ node {
 
 
 
-
+                                                                                                                                                                                                                                                                                                                                                                                                    
 
 
 
