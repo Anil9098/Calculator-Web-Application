@@ -1,7 +1,8 @@
 node {
     try {
         stage('SSH on EC2') {
-            sh "cd /home/ncs/Anil/web_app_deploy_script/bash"
+            //sh "cd /home/ncs/Anil/web_app_deploy_script/bash"
+            //sh "cd /home/ncs/Anil/web_app_deploy_script/bash"
             echo "path fixed"
             sh "./deploy_ssh.sh"
         }
@@ -13,6 +14,7 @@ node {
         echo 'Pipeline completed'
     }
 }
+
 
 
 
