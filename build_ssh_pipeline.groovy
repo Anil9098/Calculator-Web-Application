@@ -19,7 +19,7 @@ node {
 
                 ./example_deployment.sh 
 
-                EOF
+            EOF
 
                 echo "end EOF without error"
             '''
