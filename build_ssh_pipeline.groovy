@@ -3,10 +3,6 @@ node {
         stage('SSH on EC2') {
             //sh "cd /home/ncs/Anil/web_app_deploy_script/bash"
             //sh "cd /home/ncs/Anil/web_app_deploy_script/bash"
-            sh"su jenkins"
-            echo "done"
-            sh"cd /home/ncs/Anil/web_app_deploy_script/bash"
-            echo "correct"
             sh"pwd"
             echo "path fixed"
             sh "./deploy_ssh.sh"
