@@ -1,6 +1,6 @@
 node {
     try {
-        stage('Run Script') {
+        stage('SSH on EC2') {
 
             sh '''
                 #sudo ssh -i /root/.ssh/id_rsa ubuntu@13.233.100.250
