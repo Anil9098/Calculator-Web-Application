@@ -5,7 +5,7 @@ node {
             //sh "cd /home/ncs/Anil/web_app_deploy_script/bash"
             sh"pwd"
             echo "path fixed"
-            sh "./deploy_ssh.sh"
+            sh "sudo ./deploy_ssh.sh"
         }
 
     } catch (Exception e) {
