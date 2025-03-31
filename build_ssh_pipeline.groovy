@@ -7,7 +7,7 @@ node {
 
                 #sudo ssh -i /root/.ssh/id_rsa ubuntu@13.233.100.250
                 
-                sudo ssh -i "/home/ncs/Downloads/jenkinsnodekey.pem" ubuntu@13.234.67.6 <<EOF
+                sudo ssh -i "/home/ncs/Downloads/jenkinsnodekey.pem" ubuntu@13.234.67.6 "bash -l" <<EOF
                 
                 # Commands to run inside EC2
 
