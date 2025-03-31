@@ -3,7 +3,7 @@ node {
         stage('SSH on EC2') {
             sh "cd /home/ncs/Anil/web_app_deploy_script/bash"
             echo "path fixed"
-            sh "sudo ./deploy_ssh.sh"
+            sh "./deploy_ssh.sh"
         }
 
     } catch (Exception e) {
