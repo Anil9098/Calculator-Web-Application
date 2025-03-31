@@ -1,7 +1,7 @@
 node {
     try {
         stage('SSH on EC2') {
-            sh "./deploy_ssh.sh"
+            sh "./root/ncs/Anil/web_app_deploy_script/bash/deploy_ssh.sh"
         }
 
     } catch (Exception e) {
